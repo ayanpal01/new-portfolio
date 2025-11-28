@@ -101,7 +101,7 @@ export default function ProjectCard({
 
           {/* Tech Stack */}
           <div className="flex flex-wrap gap-2">
-            {tech.map((item) => (
+            {tech?.map((item) => (
               <span
                 key={item}
                 className="px-3 py-1 bg-slate-700/50 border border-slate-600/50 rounded-full text-xs text-slate-300 font-medium"

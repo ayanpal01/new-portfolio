@@ -41,7 +41,7 @@ export default function Skills() {
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skills.categories.map((category, index) => (
+          {skills.categories?.map((category, index) => (
             <div
               key={category.category}
               onMouseEnter={() => setHoveredCard(index)}
@@ -71,7 +71,7 @@ export default function Skills() {
 
                 {/* Skills Badges */}
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
+                  {category.skills?.map((skill) => (
                     <span
                       key={skill}
                       className={`
@@ -96,7 +96,7 @@ export default function Skills() {
 
         {/* Bottom decoration */}
         <div className="mt-16 flex justify-center gap-2">
-          {skills.categories.map((category, index) => (
+          {skills.categories?.map((category, index) => (
             <div
               key={index}
               className={`

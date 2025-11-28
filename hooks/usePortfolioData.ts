@@ -64,7 +64,7 @@ const defaultData = {
   },
   footer: {
     developer: "Developer",
-    technologies: ["Next.js"],
+    technologies: ["Next.js", "Firebase"],
     copyrightYear: new Date().getFullYear()
   }
 };

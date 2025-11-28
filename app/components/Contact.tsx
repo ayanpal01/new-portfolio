@@ -125,12 +125,12 @@ export default function Contact() {
         <div className="max-w-5xl mx-auto text-center">
           <p className="text-slate-400 text-sm">
             Designed & Developed by <span className="text-cyan-400 font-semibold">{portfolioData.footer.developer}</span> using{' '}
-            {portfolioData.footer.technologies.map((tech, index) => (
+            {portfolioData.footer.technologies?.map((tech, index) => (
               <span key={tech}>
                 <span className="text-slate-300">{tech}</span>
                 {index < portfolioData.footer.technologies.length - 1 && ' & '}
               </span>
-            ))}
+            )) || 'React'}
           </p>
           <p className="text-slate-500 text-xs mt-2">
             © {portfolioData.footer.copyrightYear} All rights reserved.
