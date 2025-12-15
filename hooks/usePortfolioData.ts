@@ -17,7 +17,7 @@ import {
 // Default fallback data structure
 const defaultData = {
   personal: {
-    name: "Portfolio",
+    name: "Ayan Pal",
     title: "Developer",
     description: "Loading...",
     resumeUrl: "/resume.pdf",
@@ -45,8 +45,8 @@ const defaultData = {
     experience: [] as ExperienceData[],
     education: [] as ExperienceData[],
     stats: {
-      experience: { value: "0+", label: "Years Experience" },
-      currentPursuit: { value: "Learning", label: "Current Pursuit" },
+      experience: { value: "1+", label: "Years Experience" },
+      currentPursuit: { value: "MCA", label: "Current Pursuit" },
       graduated: { value: "Student", label: "Status" }
     }
   },

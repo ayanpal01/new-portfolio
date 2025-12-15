@@ -92,7 +92,7 @@ export default function Home() {
       {/* Navigation Bar */}
       <Navbar />
       
-      <div className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-slate-950">
+      <div className="min-h-screen bg-slate-950">
         {/* Subtle grid background */}
         <div className="absolute inset-0 bg-grid-slate opacity-20"></div>
         
@@ -123,10 +123,10 @@ export default function Home() {
                 <p className="text-base sm:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed animate-fade-in-delay" itemProp="description">
                   {portfolioData.personal.description}
                 </p>
-                <div className="text-sm text-slate-500" itemProp="skills">
+                {/* <div className="text-sm text-slate-500" itemProp="skills">
                   <p><strong>Specialties:</strong> Flutter Development, React Development, Next.js, Node.js, MongoDB, TypeScript, Full-Stack Web Development</p>
                   <p><strong>Keywords:</strong> Ayan Pal, ayanpal01, Ayan Pal developer, Flutter developer, React developer, Full-stack developer, Web developer, ayanpal.tech</p>
-                </div>
+                </div> */}
               </div>
 
               {/* Buttons */}

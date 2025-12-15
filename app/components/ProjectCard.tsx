@@ -114,7 +114,7 @@ export default function ProjectCard({
 
         {/* Terminal Input Section at Bottom */}
         <div className="border-t border-slate-700/50 bg-slate-900/50 p-4">
-          <div className="font-mono text-sm">
+          <div className="font-mono text-[10px]">
             {/* Input Line */}
             <div className="flex items-center gap-2 bg-slate-800/50 rounded-lg px-3 py-2 border border-slate-700">
               <span className="text-green-400 text-xs">$</span>
@@ -124,7 +124,7 @@ export default function ProjectCard({
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="type 'live' or 'code' and press Enter"
-                className="flex-1 bg-transparent border-none outline-none text-slate-300 placeholder-slate-600 text-sm"
+                className="flex-1 bg-transparent border-none outline-none text-slate-300 placeholder-slate-600 text-[12px]"
               />
               <span className="inline-block w-1.5 h-3.5 bg-green-400 animate-pulse"></span>
             </div>

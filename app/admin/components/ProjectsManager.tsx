@@ -8,15 +8,12 @@ import {
   updateProject, 
   deleteProject 
 } from '@/lib/firebase-utils';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { storage } from '@/lib/firebase';
 
 export default function ProjectsManager() {
   const [projects, setProjects] = useState<ProjectData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [editingProject, setEditingProject] = useState<ProjectData | null>(null);
   const [showForm, setShowForm] = useState(false);
-  const [uploading, setUploading] = useState(false);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -52,21 +49,7 @@ export default function ProjectsManager() {
     }
   };
 
-  const handleImageUpload = async (file: File): Promise<string> => {
-    setUploading(true);
-    try {
-      const timestamp = Date.now();
-      const imageRef = ref(storage, `projects/${timestamp}_${file.name}`);
-      const snapshot = await uploadBytes(imageRef, file);
-      const downloadURL = await getDownloadURL(snapshot.ref);
-      return downloadURL;
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      throw error;
-    } finally {
-      setUploading(false);
-    }
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -255,45 +238,34 @@ export default function ProjectsManager() {
 
               <div>
                 <label className="block text-sm font-medium text-slate-300 mb-2">
-                  Project Image
+                  Project Image URL
                 </label>
-                <div className="space-y-2">
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={async (e) => {
-                      const file = e.target.files?.[0];
-                      if (file) {
-                        try {
-                          const imageUrl = await handleImageUpload(file);
-                          setFormData({ ...formData, imageUrl });
-                        } catch (error) {
-                          console.error('Error uploading image:', error);
-                        }
-                      }
-                    }}
-                    className="w-full px-3 py-2 bg-slate-900 border border-slate-600 rounded-lg text-slate-200"
-                  />
-                  {uploading && (
-                    <p className="text-cyan-400 text-sm">Uploading image...</p>
-                  )}
-                  {formData.imageUrl && (
-                    <div className="mt-2">
-                      <img
-                        src={formData.imageUrl}
-                        alt="Preview"
-                        className="w-32 h-24 object-cover rounded-lg border border-slate-600"
-                      />
-                    </div>
-                  )}
-                </div>
+                <input
+                  type="url"
+                  value={formData.imageUrl}
+                  onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })}
+                  className="w-full px-3 py-2 bg-slate-900 border border-slate-600 rounded-lg text-slate-200"
+                  placeholder="https://example.com/image.jpg"
+                />
+                {formData.imageUrl && (
+                  <div className="mt-2">
+                    <img
+                      src={formData.imageUrl}
+                      alt="Preview"
+                      className="w-32 h-24 object-cover rounded-lg border border-slate-600"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="flex gap-3 pt-4">
                 <button
                   type="submit"
-                  disabled={uploading}
-                  className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-colors disabled:opacity-50"
+                  className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-colors"
                 >
                   {editingProject ? 'Update Project' : 'Add Project'}
                 </button>

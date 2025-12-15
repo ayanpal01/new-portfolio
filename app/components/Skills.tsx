@@ -32,10 +32,10 @@ export default function Skills() {
         {/* Section Header */}
         <div ref={headerRef} className={`text-center mb-16 scroll-reveal visible`}>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-cyan-400" itemProp="knowsAbout">
-            Ayan Pal Skills & Expertise
+            {skills.title}
           </h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-            Professional skills and technologies used by Ayan Pal (ayanpal01) - Flutter & Full-Stack Web Developer
+            {skills.subtitle}
           </p>
         </div>
 
