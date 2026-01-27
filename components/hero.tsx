@@ -63,21 +63,31 @@ export default function Hero() {
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4">
-                    <motion.button
+                    <motion.a
+                        href="#projects"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-zinc-800 transition-colors"
                     >
                         View Projects <ArrowRight size={18} />
-                    </motion.button>
+                    </motion.a>
 
-                    <motion.button
+                    <motion.a
+                        href="#contact"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="px-6 py-3 rounded-full font-medium border border-zinc-200 hover:bg-zinc-50 transition-colors text-zinc-900"
                     >
-                        <a href="mailto:work.ayanpal@gmail.com">Contact Me</a>
-                    </motion.button>
+                        Contact Me
+                    </motion.a>
                 </div>
 
                 <div className="mt-12 flex items-center gap-6 text-zinc-400">

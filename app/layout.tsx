@@ -14,39 +14,103 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.ayanpal.tech'),
   title: {
-    default: "Ayan Pal | Full Stack Developer & UI Designer",
+    default: "Ayan Pal (ayanpal01) - Full Stack Developer | React, Next.js & Node.js Expert",
     template: "%s | Ayan Pal"
   },
-  description: "Portfolio of Ayan Pal (ayanpal01), a Full Stack Developer specializing in React, Next.js, and Modern UI Design. Available for freelance projects.",
-  keywords: ["Ayan", "Ayan Pal", "ayanpal01", "Ayanpal01", "AYAN", "Full Stack Developer", "Web Developer", "React Native", "Next.js", "UI Designer", "Freelance Developer"],
-  authors: [{ name: "Ayan Pal", url: "https://ayanpal.tech" }],
+  description: "Ayan Pal (ayanpal01) - Professional Full Stack Developer from Kolkata, India. Expert in React, Next.js, React Native, Node.js & modern web development. Available for freelance projects. Portfolio & contact information.",
+  keywords: [
+    "Ayan Pal", 
+    "ayanpal01", 
+    "Ayan", 
+    "ayan pal", 
+    "AYAN PAL",
+    "Ayan Pal developer",
+    "Ayan Pal Full Stack Developer",
+    "ayanpal01 github",
+    "ayanpal01 portfolio",
+    "Ayan Pal Kolkata",
+    "Ayan Pal India",
+    "Ayan Pal React Developer",
+    "Ayan Pal Next.js",
+    "Ayan Pal Web Developer",
+    "Full Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "React Native Developer",
+    "Node.js Developer",
+    "JavaScript Developer",
+    "TypeScript Developer",
+    "Freelance Developer India",
+    "Web Developer Kolkata"
+  ],
+  authors: [{ name: "Ayan Pal", url: "https://www.ayanpal.tech" }],
   creator: "Ayan Pal",
+  publisher: "Ayan Pal",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
-    url: "https://ayanpal.tech",
-    title: "Ayan Pal | Full Stack Developer & UI Designer",
-    description: "Portfolio of Ayan Pal (ayanpal01), a Full Stack Developer specializing in React, Next.js, and Modern UI Design.",
-    siteName: "Ayan Pal Portfolio",
+    url: "https://www.ayanpal.tech",
+    title: "Ayan Pal (ayanpal01) - Full Stack Developer | React, Next.js & Node.js Expert",
+    description: "Ayan Pal (ayanpal01) - Professional Full Stack Developer from Kolkata, India. Expert in React, Next.js, React Native, Node.js & modern web development.",
+    siteName: "Ayan Pal - Full Stack Developer Portfolio",
     images: [
       {
-        url: "https://ayanpal.tech/ayan1.jpg",
+        url: "https://www.ayanpal.tech/ayan-pal-full-stack-developer.jpg",
         width: 1200,
         height: 630,
-        alt: "Ayan Pal - Full Stack Developer",
+        alt: "Ayan Pal - Full Stack Developer (ayanpal01)",
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ayan Pal | Full Stack Developer & UI Designer",
-    description: "Portfolio of Ayan Pal (ayanpal01), a Full Stack Developer specializing in React, Next.js, and Modern UI Design.",
-    images: ["https://ayanpal.tech/ayan1.jpg"],
+    site: "@ayanpal01",
     creator: "@ayanpal01",
+    title: "Ayan Pal - Full Stack Developer (ayanpal01) ",
+    description: "Ayan Pal - Professional Full Stack Developer. React, Next.js, React Native & Node.js Expert. Available for freelance projects.",
+    images: ["https://www.ayanpal.tech/ayan-pal-full-stack-developer.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: '/icon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/safari-pinned-tab.svg',
+        color: '#000000',
+      },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  verification: {
+    google: "your-google-verification-code", // Add your Google Search Console verification code
+  },
+  alternates: {
+    canonical: "https://www.ayanpal.tech",
   },
 };
 

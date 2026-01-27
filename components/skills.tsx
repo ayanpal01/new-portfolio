@@ -41,9 +41,9 @@ export default function Skills() {
                             transition={{ delay: index * 0.05 }}
                             className="bg-zinc-50 border border-zinc-200 p-4 rounded-xl flex flex-col items-start gap-2 shadow-sm hover:shadow-md transition-shadow cursor-default"
                         >
-                            <span className="text-xs font-medium text-zinc-500 bg-zinc-100 px-2 py-1 rounded-md">
+                            {/* <span className="text-xs font-medium text-zinc-500 bg-zinc-100 px-2 py-1 rounded-md">
                                 {skill.category}
-                            </span>
+                            </span> */}
                             <span className="font-semibold text-zinc-800 text-lg">
                                 {skill.name}
                             </span>

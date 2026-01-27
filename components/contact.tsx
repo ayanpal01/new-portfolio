@@ -12,7 +12,7 @@ export default function Contact() {
     ];
 
     return (
-        <section className="w-full py-20 bg-zinc-50 border-t border-zinc-200">
+        <section id="contact" className="w-full py-20 bg-zinc-50 border-t border-zinc-200">
             <div className="max-w-4xl mx-auto px-4 md:px-0 flex flex-col items-center text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -58,8 +58,13 @@ export default function Contact() {
                     ))}
                 </motion.div>
 
-                <footer className="mt-20 text-zinc-400 text-sm">
-                    © {new Date().getFullYear()} Ayan Pal. All rights reserved.
+                <footer className="mt-20 text-center">
+                    <p className="text-zinc-400 text-sm mb-2">
+                        © {new Date().getFullYear()} Ayan Pal (ayanpal01) - Full Stack Developer. All rights reserved.
+                    </p>
+                    <p className="text-zinc-400 text-xs">
+                        Based in Kolkata, India | Building with React, Next.js & Node.js
+                    </p>
                 </footer>
             </div>
         </section>

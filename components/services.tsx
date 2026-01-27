@@ -24,7 +24,7 @@ const services = [
 
 export default function Services() {
     return (
-        <section className="w-full py-20 bg-white border-t border-zinc-100">
+        <section className="w-full py-20 bg-white">
             <div className="max-w-5xl mx-auto px-4 md:px-0">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -47,14 +47,14 @@ export default function Services() {
                             whileHover={{ y: -5 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.3, delay: index * 0.1 }}
-                            className="group relative h-[260px] rounded-2xl border border-zinc-200 bg-white p-8 hover:shadow-lg transition-all"
+                            className="group relative min-h-[260px] rounded-2xl border border-zinc-200 bg-white p-6 md:p-8 hover:shadow-lg transition-all flex flex-col"
                         >
-                            <div className="w-12 h-12 bg-zinc-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-black transition-colors duration-300">
+                            <div className="w-12 h-12 bg-zinc-50 rounded-xl flex items-center justify-center mb-4 md:mb-6 group-hover:bg-black transition-colors duration-300 flex-shrink-0">
                                 <service.icon size={24} className="text-zinc-700 group-hover:text-white transition-colors duration-300" />
                             </div>
 
-                            <h3 className="text-xl font-bold text-zinc-900 mb-3">{service.title}</h3>
-                            <p className="text-sm text-zinc-600 leading-relaxed">
+                            <h3 className="text-lg md:text-xl font-bold text-zinc-900 mb-2 md:mb-3">{service.title}</h3>
+                            <p className="text-sm text-zinc-600 leading-relaxed break-words">
                                 {service.description}
                             </p>
                         </motion.div>
