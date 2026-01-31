@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Folder } from 'lucide-react';
+import { ExternalLink, Bug, CodeXml,FolderGit2, LayoutTemplate } from 'lucide-react';
 
 const projects = [
     {
@@ -20,7 +20,7 @@ const projects = [
         tags: ["Next.js", "TypeScript", "AI", "GROQ API"],
         links: {
             github: "https://github.com/ayanpal01/NutriLens.ai",
-            demo: null
+            demo: "https://ingredi-scan.vercel.app"
         }
     },
     {
@@ -29,7 +29,7 @@ const projects = [
         tags: ["JavaScript", "API Integration", "CSS"],
         links: {
             github: "https://github.com/ayanpal01/simple-weather-website",
-            demo: null
+            demo: "https://simple-weather-website-eight.vercel.app"
         }
     },
     {
@@ -70,17 +70,17 @@ export default function Projects() {
                             <div>
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="p-2 bg-zinc-100 rounded-lg text-zinc-600 group-hover:bg-zinc-900 group-hover:text-white transition-colors">
-                                        <Folder size={24} />
+                                        <FolderGit2 size={24} />
                                     </div>
                                     <div className="flex gap-3 text-zinc-400">
                                         {project.links.github && (
                                             <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
-                                                <Github size={20} />
+                                                <CodeXml size={20} />
                                             </a>
                                         )}
                                         {project.links.demo && (
-                                            <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
-                                                <ExternalLink size={20} />
+                                            <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+                                                <LayoutTemplate size={20} />
                                             </a>
                                         )}
                                     </div>
