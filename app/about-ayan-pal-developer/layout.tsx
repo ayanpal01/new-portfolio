@@ -11,7 +11,7 @@ export const metadata: Metadata = {
         type: "profile",
         images: [
             {
-                url: "https://www.ayanpal.tech/ayan-pal-developer.jpg",
+                url: "https://www.ayanpal.tech/ayan1.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Ayan Pal - Full Stack Web Developer from India",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     twitter: {
         title: "About Ayan Pal – Full-Stack Web Developer from India",
         description: "Ayan Pal is a Full-Stack Web Developer from India. Specializing in React, Next.js, React Native, Node.js, TypeScript, and AI-powered applications.",
-        images: ["https://www.ayanpal.tech/ayan-pal-developer.jpg"],
+        images: ["https://www.ayanpal.tech/ayan-pal-img3.jpg"],
     },
     alternates: {
         canonical: "https://www.ayanpal.tech/about-ayan-pal-developer",

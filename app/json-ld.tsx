@@ -68,7 +68,7 @@ export default function JsonLd() {
         "@id": "https://www.ayanpal.tech/#profilepage",
         "url": "https://www.ayanpal.tech",
         "name": "Ayan Pal - Professional Profile",
-        "dateCreated": "2025-01-01T00:00:00+00:00",
+        "dateCreated": "2025-02-01T00:00:00+00:00",
         "dateModified": new Date().toISOString(),
         "mainEntity": {
             "@id": "https://www.ayanpal.tech/#person"
@@ -118,7 +118,7 @@ export default function JsonLd() {
             "https://github.com/ayanpal01",
             "https://facebook.com/ayan.pal.3304",
             "https://instagram.com/ayan.pal__",
-            "https://youtube.com/@ayanpal01",
+            "https://youtube.com/@think-with-ayan",
             "https://medium.com/@ayanpal01"
         ]
     };

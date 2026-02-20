@@ -59,7 +59,7 @@ export default function Hero() {
                     <span className="text-zinc-500">experiences that matter.</span>
                 </h1>
                 <p className="text-xl text-zinc-600 mb-8 max-w-lg leading-relaxed">
-                    I'm <a href="/about-ayan-pal-developer" className="font-semibold text-zinc-900 hover:underline">Ayan Pal (Developer)</a>, a Full Stack Developer passionate about creating intuitive, scalable, and beautiful web applications.
+                    I'm <a href="/about-ayan-pal-developer" className="font-semibold text-zinc-900 hover:underline">Ayan Pal </a>, a Full Stack Developer passionate about creating intuitive, scalable, and beautiful web applications.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4">

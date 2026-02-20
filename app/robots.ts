@@ -23,7 +23,10 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ['/admin/', '/api/'],
             },
         ],
-        sitemap: 'https://www.ayanpal.tech/sitemap.xml',
+        sitemap: [
+            'https://www.ayanpal.tech/sitemap.xml',
+            'https://www.ayanpal.tech/image-sitemap.xml',
+        ],
         host: 'https://www.ayanpal.tech',
     };
 }

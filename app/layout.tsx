@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ayanpal.tech'),
   title: {
-    default: "Ayan Pal (Developer) | Full-Stack Web Developer",
+    default: "Ayan Pal | Full-Stack Web Developer",
     template: "%s | Ayan Pal"
   },
   description: "Ayan Pal is a Full-Stack Web Developer from India, specializing in React, Next.js, React Native, Node.js, TypeScript, and AI-powered applications. Building modern, scalable web solutions.",
@@ -45,7 +45,15 @@ export const metadata: Metadata = {
     "JavaScript Developer",
     "TypeScript Developer",
     "Web Developer Kolkata",
-    "Software Engineer India"
+    "Software Engineer India",
+    "Karimpur",
+    "West Bengal",
+    "Ayan Pal Karimpur",
+    "Nadia",
+    "Ayan Pal Nadia",
+    "Ayan Pal West Bengal",
+    "Ayan Pal tech",
+    "Think With Ayan"
   ],
   authors: [{ name: "Ayan Pal", url: "https://www.ayanpal.tech" }],
   creator: "Ayan Pal",
@@ -78,7 +86,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@ayanpal01",
     creator: "@ayanpal01",
-    title: "Ayan Pal (Developer) | Full-Stack Web Developer",
+    title: "Ayan Pal | Full-Stack Web Developer",
     description: "Full-Stack Web Developer from India. Specializing in React, Next.js, React Native, Node.js, TypeScript, and AI-powered applications.",
     images: ["https://www.ayanpal.tech/ayan-pal-developer.jpg"],
   },

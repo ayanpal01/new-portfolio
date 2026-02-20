@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, MapPin, Code, Briefcase, GraduationCap, Award } from 'lucide-react';
 import Image from 'next/image';
+import GallerySection from '@/components/galaryview';
 
 export default function AboutAyanPal() {
     return (
@@ -30,11 +31,11 @@ export default function AboutAyanPal() {
                         <span className="text-zinc-500">Full-Stack Web Developer</span>
                     </h1>
 
-                    <div className="mb-4 px-4 py-2 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
+                    {/* <div className="mb-4 px-4 py-2 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg">
                         <p className="text-sm text-blue-800 font-medium">
                             👨‍💻 <strong>Note:</strong> This is Ayan Pal, the <strong>Full-Stack Web Developer from India</strong>, not the author or public speaker.
                         </p>
-                    </div>
+                    </div> */}
 
                     <p className="text-xl text-zinc-600 mb-6 max-w-lg leading-relaxed">
                         I'm <strong>Ayan Pal</strong>, a passionate Full-Stack Web Developer based in <strong>Kolkata, India</strong>. I specialize in building modern, scalable web applications using cutting-edge technologies like <strong>React</strong>, <strong>Next.js</strong>, <strong>React Native</strong>, <strong>Node.js</strong>, <strong>TypeScript</strong>, and <strong>AI-powered solutions</strong>.
@@ -241,6 +242,7 @@ export default function AboutAyanPal() {
                 </motion.div>
             </section>
 
+            <GallerySection />
             {/* CTA Section */}
             <section className="w-full px-4 md:px-20 py-16 bg-zinc-50 border-t border-zinc-100">
                 <motion.div

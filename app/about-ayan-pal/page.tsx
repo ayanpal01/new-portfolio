@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, MapPin, Code, Briefcase, GraduationCap, Award } from 'lucide-react';
 import Image from 'next/image';
+import GallerySection from '@/components/galaryview';
 
 export default function AboutAyanPal() {
     return (
@@ -233,6 +234,8 @@ export default function AboutAyanPal() {
                     </div>
                 </motion.div>
             </section>
+
+            <GallerySection />
 
             {/* CTA Section */}
             <section className="w-full px-4 md:px-20 py-16 bg-zinc-50 border-t border-zinc-100">
