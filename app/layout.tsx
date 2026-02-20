@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     type: "profile",
     locale: "en_US",
     url: "https://www.ayanpal.tech",
-    title: "Ayan Pal (Developer) | Full-Stack Web Developer",
+    title: "Ayan Pal | Full-Stack Web Developer",
     description: "Ayan Pal is a Full-Stack Web Developer from India, specializing in React, Next.js, React Native, Node.js, TypeScript, and AI-powered applications. Building modern, scalable web solutions.",
     siteName: "Ayan Pal - Developer Portfolio",
     images: [
