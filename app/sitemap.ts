@@ -1,36 +1,30 @@
 import { MetadataRoute } from 'next';
 
+const BASE_URL = 'https://www.ayanpal.tech';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-    return [
+    const currentDate = new Date().toISOString();
+    
+    const routes: MetadataRoute.Sitemap = [
         {
-            url: 'https://www.ayanpal.tech',
-            lastModified: new Date(),
+            url: BASE_URL,
+            lastModified: currentDate,
             changeFrequency: 'weekly',
             priority: 1.0,
         },
         {
-            url: 'https://www.ayanpal.tech/#experience',
-            lastModified: new Date(),
+            url: `${BASE_URL}/about-ayan-pal`,
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: 'https://www.ayanpal.tech/#projects',
-            lastModified: new Date(),
+            url: `${BASE_URL}/about-ayan-pal-developer`,
+            lastModified: currentDate,
             changeFrequency: 'monthly',
             priority: 0.9,
         },
-        {
-            url: 'https://www.ayanpal.tech/#skills',
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.7,
-        },
-        {
-            url: 'https://www.ayanpal.tech/#contact',
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.8,
-        },
     ];
+
+    return routes;
 }

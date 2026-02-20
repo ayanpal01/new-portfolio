@@ -1,98 +1,125 @@
+import { generatePersonSchema } from '@/lib/seo-utils';
+
 export default function JsonLd() {
-    const personSchema = {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://www.ayanpal.tech/#person",
-        "name": "Ayan Pal",
-        "alternateName": ["ayanpal01", "Ayan", "ayan pal"],
-        "url": "https://www.ayanpal.tech",
-        "image": {
-            "@type": "ImageObject",
-            "url": "https://www.ayanpal.tech/ayan-pal-full-stack-developer.jpg",
-            "caption": "Ayan Pal - Full Stack Developer"
-        },
-        "sameAs": [
-            "https://github.com/ayanpal01",
-            "https://www.linkedin.com/in/ayanpal01",
-            "https://twitter.com/ayanpal01",
-            "https://x.com/ayanpal01",
-            "https://www.instagram.com/ayan.pal__"
-        ],
-        "jobTitle": "Full Stack Developer",
-        "description": "Ayan Pal (ayanpal01) is a professional Full Stack Developer from Kolkata, India, specializing in React, Next.js, React Native, Node.js, and modern web application development.",
-        "knowsAbout": [
-            "Full Stack Development",
-            "React.js",
-            "Next.js",
-            "React Native",
-            "Node.js",
-            "JavaScript",
-            "TypeScript",
-            "Web Development",
-            "Mobile App Development",
-            "UI/UX Design",
-            "MongoDB",
-            "Express.js",
-            "Tailwind CSS"
-        ],
-        "worksFor": {
-            "@type": "Organization",
-            "name": "Freelance"
-        },
-        "nationality": {
-            "@type": "Country",
-            "name": "India"
-        },
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Kolkata",
-            "addressRegion": "West Bengal",
-            "addressCountry": "IN"
-        },
-        "email": "work.ayanpal@gmail.com",
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "Adamas University"
-        }
-    };
+    const personSchema = generatePersonSchema({
+        url: "https://www.ayanpal.tech",
+    });
 
     const websiteSchema = {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "@id": "https://www.ayanpal.tech/#website",
         "url": "https://www.ayanpal.tech",
-        "name": "Ayan Pal - Full Stack Developer Portfolio",
-        "description": "Official portfolio website of Ayan Pal (ayanpal01), Full Stack Developer",
+        "name": "Ayan Pal",
+        "alternateName": "ayanpal01",
+        "description": "Official portfolio website of Ayan Pal (ayanpal01), Full Stack Developer and Tech Creator",
+        "inLanguage": "en-US",
+        "isPartOf": {
+            "@id": "https://www.ayanpal.tech/#webpage"
+        },
+        "about": {
+            "@id": "https://www.ayanpal.tech/#person"
+        },
         "publisher": {
             "@id": "https://www.ayanpal.tech/#person"
         },
+        "copyrightHolder": {
+            "@id": "https://www.ayanpal.tech/#person"
+        },
+        "copyrightYear": 2026,
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://www.ayanpal.tech/?s={search_term_string}",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://www.ayanpal.tech/?s={search_term_string}"
+            },
             "query-input": "required name=search_term_string"
         }
+    };
+
+    const webPageSchema = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://www.ayanpal.tech/#webpage",
+        "url": "https://www.ayanpal.tech",
+        "name": "Ayan Pal - Full Stack Developer Portfolio",
+        "isPartOf": {
+            "@id": "https://www.ayanpal.tech/#website"
+        },
+        "about": {
+            "@id": "https://www.ayanpal.tech/#person"
+        },
+        "primaryImageOfPage": {
+            "@id": "https://www.ayanpal.tech/#primaryimage"
+        },
+        "datePublished": "2025-01-01T00:00:00+00:00",
+        "dateModified": new Date().toISOString(),
+        "description": "Ayan Pal (@ayanpal01) - Full Stack Developer from Kolkata specializing in React, Next.js & Node.js",
+        "inLanguage": "en-US",
+        "potentialAction": [{
+            "@type": "ReadAction",
+            "target": ["https://www.ayanpal.tech"]
+        }]
     };
 
     const profilePageSchema = {
         "@context": "https://schema.org",
         "@type": "ProfilePage",
+        "@id": "https://www.ayanpal.tech/#profilepage",
+        "url": "https://www.ayanpal.tech",
+        "name": "Ayan Pal - Professional Profile",
         "dateCreated": "2025-01-01T00:00:00+00:00",
         "dateModified": new Date().toISOString(),
         "mainEntity": {
             "@id": "https://www.ayanpal.tech/#person"
+        },
+        "mainEntityOfPage": {
+            "@id": "https://www.ayanpal.tech/#webpage"
+        },
+        "isPartOf": {
+            "@id": "https://www.ayanpal.tech/#website"
         }
     };
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+        "@id": "https://www.ayanpal.tech/#breadcrumb",
         "itemListElement": [
             {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://www.ayanpal.tech"
+                "item": {
+                    "@type": "WebPage",
+                    "@id": "https://www.ayanpal.tech",
+                    "url": "https://www.ayanpal.tech"
+                }
             }
+        ]
+    };
+
+    const organizationSchema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "@id": "https://www.ayanpal.tech/#organization",
+        "name": "ayanpal01",
+        "alternateName": "Ayan Pal",
+        "url": "https://www.ayanpal.tech",
+        "logo": {
+            "@id": "https://www.ayanpal.tech/#primaryimage"
+        },
+        "founder": {
+            "@id": "https://www.ayanpal.tech/#person"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/ayanpal01",
+            "https://twitter.com/ayanpal01",
+            "https://github.com/ayanpal01",
+            "https://facebook.com/ayan.pal.3304",
+            "https://instagram.com/ayan.pal__",
+            "https://youtube.com/@ayanpal01",
+            "https://medium.com/@ayanpal01"
         ]
     };
 
@@ -101,18 +128,32 @@ export default function JsonLd() {
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+                key="person-schema"
             />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+                key="website-schema"
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+                key="webpage-schema"
             />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
+                key="profilepage-schema"
             />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+                key="breadcrumb-schema"
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+                key="organization-schema"
             />
         </>
     );

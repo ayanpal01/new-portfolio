@@ -15,7 +15,7 @@ const projects = [
         }
     },
     {
-        title: "NutriLens.ai",
+        title: "IngrediScan",
         description: "A full-stack application for nutrition analysis. Features image upload with OCR, text input, and AI-powered analysis via GROQ to provide health scores and ingredient insights.",
         tags: ["Next.js", "TypeScript", "AI", "GROQ API"],
         links: {

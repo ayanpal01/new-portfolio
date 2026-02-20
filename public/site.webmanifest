@@ -1,11 +1,14 @@
 {
-  "name": "Ayan Pal - Full Stack Developer",
+  "name": "Ayan Pal (Developer) - Full-Stack Web Developer Portfolio",
   "short_name": "Ayan Pal",
-  "description": "Portfolio of Ayan Pal (ayanpal01) - Full Stack Developer specializing in React, Next.js, and Node.js",
+  "description": "Ayan Pal is a Full-Stack Web Developer from India specializing in React, Next.js, Node.js, TypeScript, and AI-powered applications. Not the author or speaker.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity", "portfolio"],
   "icons": [
     {
       "src": "/icon.png",
