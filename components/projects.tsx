@@ -2,16 +2,16 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Bug, CodeXml,FolderGit2, LayoutTemplate } from 'lucide-react';
+import { ExternalLink, Bug, CodeXml,FolderGit2, Link2 } from 'lucide-react';
 
 const projects = [
     {
-        title: "NearShield",
-        description: "A safety app that locates nearby emergency services, shows real-time weather/alerts, and lets users report incidents with photos. Built with React Native and Expo.",
-        tags: ["React Native", "Expo", "Mapbox", "JavaScript"],
+        title: "SketchSync",
+        description: "Engineered a real-time collaborative whiteboard that transforms mobile devices into wireless pen tablets. Executed real-time synchronization using Socket.IO with secure room-based access.",
+        tags: ["Socket.IO", "Next.js", "TypeScript", "Tailwind CSS"],
         links: {
-            github: "https://github.com/ayanpal01/NearShield",
-            demo: null
+            // github: "https://github.com/ayanpal01/SketchSync",
+            demo: "https://sketch-sync-rho.vercel.app/"
         }
     },
     {
@@ -19,8 +19,17 @@ const projects = [
         description: "A full-stack application for nutrition analysis. Features image upload with OCR, text input, and AI-powered analysis via GROQ to provide health scores and ingredient insights.",
         tags: ["Next.js", "TypeScript", "AI", "GROQ API"],
         links: {
-            github: "https://github.com/ayanpal01/NutriLens.ai",
+            // github: "https://github.com/ayanpal01/NutriLens.ai",
             demo: "https://ingredi-scan.vercel.app"
+        }
+    },
+    {
+        title: "PG Master",
+        description: "a role-based PG management system with attendance, expense, and payment tracking",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "jsPdf", ""],
+        links: {
+            // github: "https://github.com/ayanpal01/PG-Master",
+            demo: "https://pg-master-gilt.vercel.app"
         }
     },
     {
@@ -28,17 +37,8 @@ const projects = [
         description: "A clean and simple weather application that provides real-time weather information based on the city entered. Displays temperature, wind speed, and more.",
         tags: ["JavaScript", "API Integration", "CSS"],
         links: {
-            github: "https://github.com/ayanpal01/simple-weather-website",
+            // github: "https://github.com/ayanpal01/simple-weather-website",
             demo: "https://simple-weather-website-eight.vercel.app"
-        }
-    },
-    {
-        title: "Airbnb Clone",
-        description: "A functional clone of the Airbnb platform features, showcasing frontend development skills and UI replication.",
-        tags: ["React", "UI/UX", "Clone"],
-        links: {
-            github: "https://github.com/ayanpal01/Airbnb-clone",
-            demo: null
         }
     }
 ];
@@ -65,6 +65,7 @@ export default function Projects() {
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
                             whileHover={{ y: -5 }}
+                            onClick={() => window.open(project.links.demo, "_blank")}
                             className="bg-white border border-zinc-200 rounded-xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-all group"
                         >
                             <div>
@@ -73,14 +74,14 @@ export default function Projects() {
                                         <FolderGit2 size={24} />
                                     </div>
                                     <div className="flex gap-3 text-zinc-400">
-                                        {project.links.github && (
+                                        {/* {project.links.github && (
                                             <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
                                                 <CodeXml size={20} />
                                             </a>
-                                        )}
+                                        )} */}
                                         {project.links.demo && (
                                             <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
-                                                <LayoutTemplate size={20} />
+                                                <Link2 size={20} />
                                             </a>
                                         )}
                                     </div>

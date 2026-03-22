@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Layout, Smartphone, Server } from 'lucide-react';
+import { Layout, Server, Bot } from 'lucide-react';
 
 const services = [
     {
@@ -11,14 +11,14 @@ const services = [
         description: "Building high-performance, responsive websites using Next.js, React, and Tailwind CSS. Focused on SEO and user experience."
     },
     {
-        title: "Mobile App Development",
-        icon: Smartphone,
-        description: "Creating cross-platform mobile applications with React Native. Delivering smooth, native-like experiences for iOS and Android."
-    },
-    {
         title: "Backend & API",
         icon: Server,
         description: "Designing scalable server-side architectures, RESTful APIs, and database solutions using Node.js, Express, and modern DBs."
+    },
+    {
+        title: "Automation",
+        icon: Bot,
+        description: "Automating repetitive tasks using Python scripts and other tools. Focused on saving time and improving efficiency."
     }
 ];
 

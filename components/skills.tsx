@@ -15,6 +15,7 @@ const skills = [
     { name: "MongoDB", category: "Database" },
     { name: "Flutter", category: "Mobile" },
     { name: "Git", category: "Tools" },
+    { name: "DBMS", category: "Database" },
 ];
 
 export default function Skills() {

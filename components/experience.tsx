@@ -14,7 +14,7 @@ const experiences = [
     {
         role: "Frontend Web Dev Intern",
         company: "Azmth",
-        period: "Jun 2023 - Nov 2024",
+        period: "Jun 2023 - May 2025",
         description: "Built responsive and interactive user interfaces using Nextjs, Reactjs, TypeScript, Tailwindcss, and other modern web technologies. Worked closely with designers to translate UI/UX designs into production-ready components and improved page load performance and accessibility."
     }
 ];
