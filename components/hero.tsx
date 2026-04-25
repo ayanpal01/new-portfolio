@@ -38,14 +38,35 @@ export default function Hero() {
     };
 
     return (
-        <section className="w-full min-h-[85vh] flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 pt-20 px-4 md:px-20 bg-white">
-            {/* Left Content */}
-            <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="w-full md:w-1/2 flex flex-col justify-center items-start z-10"
+        <section className="relative w-full min-h-[85vh] overflow-hidden bg-white">
+            <svg
+                className="absolute left-0 top-0 h-full w-[45%] opacity-60"
+                viewBox="0 0 600 800"
+                aria-hidden="true"
             >
+                <defs>
+                    <pattern
+                        id="heroDotPattern"
+                        x="0"
+                        y="0"
+                        width="24"
+                        height="24"
+                        patternUnits="userSpaceOnUse"
+                    >
+                        <circle cx="2" cy="2" r="1.4" fill="rgba(0,0,0,0.28)" />
+                        <circle cx="14" cy="16" r="1" fill="rgba(0,0,0,0.18)" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#heroDotPattern)" />
+            </svg>
+            <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 pt-20 px-4 md:px-20">
+                {/* Left Content */}
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="w-full md:w-1/2 flex flex-col justify-center items-start z-10"
+                >
                 <div className="mb-2 flex items-center justify-center gap-2 px-3 py-1.5">
                     <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gray-400 opacity-75"></span>
@@ -59,7 +80,7 @@ export default function Hero() {
                     <span className="text-zinc-500">experiences that matter.</span>
                 </h1>
                 <p className="text-xl text-zinc-600 mb-8 max-w-lg leading-relaxed">
-                    I'm <a href="/about-ayan-pal-developer" className="font-semibold text-zinc-900 hover:underline">Ayan Pal </a>, a Full Stack Developer passionate about creating intuitive, scalable, and beautiful web applications.
+                    I'm <a href="/about-ayan-pal" className="font-semibold text-zinc-900 hover:underline">Ayan Pal </a>, a Full Stack Developer passionate about creating intuitive, scalable, and beautiful web applications.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4">
@@ -101,26 +122,26 @@ export default function Hero() {
                         <Mail size={24} />
                     </a>
                 </div>
-            </motion.div>
+                </motion.div>
 
-            {/* Right Content - 3D ID Card */}
-            <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="w-full md:w-1/2 flex justify-center items-center perspective-1000"
-                style={{ perspective: 1000 }}
-            >
+                {/* Right Content - 3D ID Card */}
                 <motion.div
-                    style={{
-                        rotateX,
-                        rotateY,
-                        transformStyle: "preserve-3d",
-                    }}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    className="relative w-[320px] h-[480px] bg-white rounded-3xl shadow-2xl border border-zinc-200/60 p-6 flex flex-col items-center select-none cursor-pointer group"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="w-full md:w-1/2 flex justify-center items-center perspective-1000"
+                    style={{ perspective: 1000 }}
                 >
+                    <motion.div
+                        style={{
+                            rotateX,
+                            rotateY,
+                            transformStyle: "preserve-3d",
+                        }}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={handleMouseLeave}
+                        className="relative w-[320px] h-[480px] bg-white rounded-3xl shadow-2xl border border-zinc-200/60 p-6 flex flex-col items-center select-none cursor-pointer group"
+                    >
                     {/* Floating Elements for Depth */}
                     <div
                         className="absolute inset-0 rounded-3xl border-2 border-zinc-50 pointer-events-none"
@@ -186,8 +207,9 @@ export default function Hero() {
                     {/* Shine Effect */}
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
+                    </motion.div>
                 </motion.div>
-            </motion.div>
+            </div>
         </section>
     );
 }

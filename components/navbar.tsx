@@ -1,112 +1,103 @@
 "use client";
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Code, Briefcase, FolderGit2, Mail, Library } from 'lucide-react';
+import { User, FolderGit2, ImageIcon, Hash, X, Menu } from 'lucide-react';
 
 export default function Navbar() {
-    const [isHovered, setIsHovered] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navItems = [
-        { name: 'About', icon: User, href: '#about' },
-        { name: 'Skills', icon: Code, href: '#skills' },
-        { name: 'Experience', icon: Briefcase, href: '#experience' },
-        { name: 'Projects', icon: FolderGit2, href: '#projects' },
-        { name: 'Library', icon: Library, href: '/library' },
-        { name: 'Contact', icon: Mail, href: '#contact' },
+        { name: 'About', icon: User, href: '/about-ayan-pal' },
+        { name: 'Projects', icon: FolderGit2, href: '/projects' },
+        { name: 'Gallery', icon: ImageIcon, href: '/library' },
+        // { name: 'Contact', icon: Mail, href: '#contact' },
     ];
 
     return (
-        <motion.div
-            // Added justify-between to ensure content separation on expansion
-            className={`flex items-center bg-white border border-zinc-200 rounded-full shadow-lg overflow-hidden ${isHovered ? 'justify-between' : ''}`}
-            layout
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onClick={() => setIsHovered(!isHovered)}
-            // Use flex-basis or min-width logic if needed, but width: 100% should work in the container
-            initial={{ width: 'fit-content' }}
-            animate={{ width: isHovered ? '100%' : 'fit-content' }}
-            style={{ height: 75 }}
-        >
-            {/* Profile Section - Always Visible */}
-            <motion.div
-                layout="position" // Participate in layout transitions
-                className="flex-shrink-0 p-2 pl-2 flex items-center gap-3"
-            >
-                <div className="relative w-[58px] h-[58px] rounded-full overflow-hidden border-2 border-transparent group-hover:border-blue-500 transition-colors">
-                    <Image
-                        src="/ayan1.jpg"
-                        alt="Profile"
-                        fill
-                        className="object-cover"
-                    />
+        <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50 border-b border-slate-100">
+            <div className="max-w-6xl mx-auto px-4 md:px-8">
+                <div className="flex items-center justify-between h-20">
+                    <Link href="/" className="flex items-center gap-2 relative z-50" onClick={() => setIsMobileMenuOpen(false)}>
+                        <span className="text-2xl font-extrabold tracking-tighter text-slate-900">AYAN PAL</span>
+                    </Link>
+                    
+                    {/* Desktop Menu */}
+                    <div className="hidden md:flex items-center gap-8">
+                        {navItems.map((item, index) => {
+                            return (
+                                <Link key={index} href={item.href}
+                                    className="flex items-center gap-1.5 text-slate-600 hover:text-blue-600 transition-colors group"
+                                >
+                                    <Hash size={16} className='text-slate-400 group-hover:text-blue-500 transition-colors'/>
+                                    <span className="text-sm font-semibold tracking-widest">{item.name.toUpperCase()}</span>
+                                </Link>
+                            );
+                        })}
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden flex items-center relative z-50">
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-slate-900 font-semibold tracking-widest text-xs hover:bg-slate-100 active:scale-95 transition-all"
+                        >
+                            {isMobileMenuOpen ? (
+                                <>
+                                    <span>CLOSE</span>
+                                    <X size={16} />
+                                </>
+                            ) : (
+                                <>
+                                    <span>MENU</span>
+                                    {/* <Menu size={16} /> */}
+                                </>
+                            )}
+                        </button>
+                    </div>
                 </div>
+            </div>
 
-                {/* Name & Role - Always Visible */}
-                <motion.div
-                    layout="position"
-                    className="flex flex-col whitespace-nowrap pr-4"
-                >
-                    <span className="font-bold text-lg leading-tight text-black">Ayan Pal</span>
-                    <span className="text-xs text-zinc-500">Full Stack Developer</span>
-                </motion.div>
-            </motion.div>
-
-            {/* Expandable Menu Items */}
-            <AnimatePresence mode="popLayout">
-                {isHovered && (
+            {/* Mobile Menu Dropdown (Top to Bottom Dropdown) */}
+            <AnimatePresence>
+                {isMobileMenuOpen && (
                     <motion.div
-                        layout="position"
-                        className="flex items-center gap-1 pr-2"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 20 }}
-                        transition={{ duration: 0.3, delay: 0.1 }}
+                        initial={{ opacity: 0, y: -20, height: 0 }}
+                        animate={{ opacity: 1, y: 0, height: 'auto' }}
+                        exit={{ opacity: 0, y: -20, height: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className="md:hidden bg-white border-b border-slate-100 overflow-hidden shadow-2xl shadow-slate-900/10 absolute top-20 left-0 w-full"
                     >
-                        <div className="h-8 w-[1px] bg-zinc-200 mx-2" />
-
-                        <div className="flex items-center gap-1">
-                            {navItems.map((item) => {
-                                const isExternal = item.href.startsWith('/');
-                                const Element = isExternal ? Link : 'a';
-                                const props = isExternal ? { href: item.href } : { 
-                                    href: item.href,
-                                    onClick: (e: React.MouseEvent) => {
-                                        e.preventDefault();
-                                        document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
-                                    }
-                                };
-                                
+                        <div className="px-4 py-6 flex flex-col gap-3 max-h-[80vh] overflow-y-auto">
+                            {navItems.map((item, index) => {
+                                const Icon = item.icon;
                                 return (
-                                <motion.div key={item.name} layout="position">
-                                    <Element
-                                        {...props}
-                                        className="block p-2 rounded-full hover:bg-zinc-100 text-zinc-600 hover:text-black transition-colors relative group"
+                                    <Link 
+                                        key={index} 
+                                        href={item.href}
+                                        onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         <motion.div
-                                            whileHover={{ scale: 1.1 }}
-                                            whileTap={{ scale: 0.95 }}
+                                            initial={{ opacity: 0, x: -20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: index * 0.05 }}
+                                            className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 active:bg-blue-50 active:border-blue-100 transition-colors"
                                         >
-                                            <item.icon size={20} />
+                                            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-blue-600 border border-slate-100">
+                                                <Icon size={24} />
+                                            </div>
+                                            <span className="text-xl font-bold text-slate-800 tracking-tight">
+                                                {item.name}
+                                            </span>
                                         </motion.div>
-                                        <span className="sr-only">{item.name}</span>
-
-                                        {/* Tooltip */}
-                                        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-black text-white px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                                            {item.name}
-                                        </span>
-                                    </Element>
-                                </motion.div>
-                            );
+                                    </Link>
+                                );
                             })}
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.div>
+        </nav>
     );
 }

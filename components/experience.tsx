@@ -8,7 +8,7 @@ const experiences = [
     {
         role: "Full Stack Developer",
         company: "Intelli Edtech",
-        period: "Jan 2026 - Present",
+        period: "Jan 2026 - Apr 2026",
         description: "Developed a multimodal AI system to detect and categorize previous year examination questions, built automated database integration for storage and retrieval, and delivered full-stack features to streamline question processing workflows."
     },
     {
@@ -21,8 +21,8 @@ const experiences = [
 
 export default function Experience() {
     return (
-        <section className="w-full py-20 ">
-            <div className="max-w-4xl mx-auto px-4 md:px-0">
+        <section className="w-full overflow-hidden py-20 bg-white">
+            <div className="relative z-10 max-w-4xl mx-auto px-4 md:px-0">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
