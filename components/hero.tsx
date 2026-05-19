@@ -38,7 +38,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative w-full min-h-[85vh] overflow-hidden bg-white">
+        <section className="relative w-full min-h-[85vh] overflow-hidden bg-white pb-24 md:pb-0">
             <svg
                 className="absolute left-0 top-0 h-full w-[45%] opacity-60"
                 viewBox="0 0 600 800"
@@ -59,7 +59,7 @@ export default function Hero() {
                 </defs>
                 <rect width="100%" height="100%" fill="url(#heroDotPattern)" />
             </svg>
-            <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 pt-20 px-4 md:px-20">
+            <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0 pt-32 px-4 md:px-20">
                 {/* Left Content */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
@@ -90,9 +90,9 @@ export default function Hero() {
                             e.preventDefault();
                             document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{ scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.1)" }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-zinc-800 transition-colors"
+                        className="flex items-center gap-2 bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-zinc-800 transition-all duration-300"
                     >
                         View Projects <ArrowRight size={18} />
                     </motion.a>
@@ -103,9 +103,9 @@ export default function Hero() {
                             e.preventDefault();
                             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{ scale: 1.05, boxShadow: "0px 5px 15px rgba(0,0,0,0.05)" }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 py-3 rounded-full font-medium border border-zinc-200 hover:bg-zinc-50 transition-colors text-zinc-900"
+                        className="px-6 py-3 rounded-full font-medium border border-zinc-200 hover:bg-zinc-50 hover:border-zinc-300 transition-all duration-300 text-zinc-900"
                     >
                         Contact Me
                     </motion.a>

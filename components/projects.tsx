@@ -66,7 +66,7 @@ export default function Projects() {
                             transition={{ delay: index * 0.1 }}
                             whileHover={{ y: -5 }}
                             onClick={() => window.open(project.links.demo, "_blank")}
-                            className="bg-white border border-zinc-200 rounded-xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-all group"
+                            className="bg-white border border-zinc-200 rounded-xl p-6 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-blue-200/50 transition-all duration-300 group cursor-pointer"
                         >
                             <div>
                                 <div className="flex justify-between items-start mb-4">

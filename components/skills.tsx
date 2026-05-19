@@ -40,7 +40,7 @@ export default function Skills() {
                             whileHover={{ scale: 1.05, y: -5 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.05 }}
-                            className="bg-zinc-50 border border-zinc-200 p-4 rounded-xl flex flex-col items-start gap-2 shadow-sm hover:shadow-md transition-shadow cursor-default"
+                            className="bg-gradient-to-br from-zinc-50 to-white border border-zinc-200 p-4 rounded-xl flex flex-col items-start gap-2 shadow-sm hover:shadow-lg hover:border-zinc-300 transition-all duration-300 cursor-default"
                         >
                             {/* <span className="text-xs font-medium text-zinc-500 bg-zinc-100 px-2 py-1 rounded-md">
                                 {skill.category}

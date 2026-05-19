@@ -11,7 +11,7 @@ export default function Navbar() {
     const navItems = [
         { name: 'About', icon: User, href: '/about-ayan-pal' },
         { name: 'Projects', icon: FolderGit2, href: '/projects' },
-        { name: 'Gallery', icon: ImageIcon, href: '/library' },
+        { name: 'Gallery', icon: ImageIcon, href: '/gallery' },
         // { name: 'Contact', icon: Mail, href: '#contact' },
     ];
 

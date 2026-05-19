@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import JsonLd from "./json-ld";
@@ -12,8 +12,16 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["300", "400", "500", "600", "700"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark light",
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.ayanpal.tech'),
+  applicationName: "Ayan Pal Portfolio",
   title: {
     default: "Ayan Pal | Full-Stack Web Developer",
     template: "%s | Ayan Pal"
@@ -145,8 +153,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="color-scheme" content="dark light" />
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />
       </head>
       <body className={`${ibmPlexMono.variable} antialiased`}>
