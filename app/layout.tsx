@@ -1,16 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import JsonLd from "./json-ld";
 import Navbar from "@/components/navbar";
-
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-  weight: ["300", "400", "500", "600", "700"],
-});
+import ClientScripts from "@/components/ClientScripts";
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -151,14 +143,33 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />
       </head>
-      <body className={`${ibmPlexMono.variable} antialiased`}>
+      <body className={`antialiased font-sans`}>
+        <div className="blueprint-grid" aria-hidden="true"></div>
+        <div className="progress-rule" aria-hidden="true"></div>
+        <div className="regmarks" aria-hidden="true">
+          <span className="tl"><i className="tick"></i> SHEET 01/04 — PORTFOLIO</span>
+          <span className="br">REV. 2026.06 <i className="tick"></i></span>
+        </div>
         <JsonLd />
         <Navbar/>
         {children}
+        <footer className="site-footer">
+          <div className="container site-footer__row">
+            <span className="site-footer__brand">© <span data-year="2026">2026</span> Ayan Pal — Full Stack Developer. All rights reserved.</span>
+            <div className="site-footer__social">
+              <a href="https://github.com/ayanpal01" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://linkedin.com/in/ayanpal01" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://x.com/ayanpal01" target="_blank" rel="noopener noreferrer">X</a>
+            </div>
+            <span className="site-footer__meta">Based in Kolkata, India<br/>Built with React, Next.js &amp; Node.js</span>
+          </div>
+        </footer>
+        <ClientScripts />
       </body>
     </html>
   );

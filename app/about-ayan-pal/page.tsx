@@ -1,205 +1,99 @@
-"use client";
-
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, Linkedin, Mail, MapPin, Code, Briefcase, GraduationCap, Laptop, Sparkles, Server } from 'lucide-react';
-import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutAyanPal() {
-    const { scrollYProgress } = useScroll();
-    const yHero = useTransform(scrollYProgress, [0, 1], [0, 200]);
-    
-    return (
-        <div className="min-h-screen bg-slate-50 selection:bg-slate-900 selection:text-white">
-            {/* Hero Section */}
-            <section className="sticky top-0 z-0 w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-slate-50 pt-20 px-4 md:px-8">
-                {/* Background Details */}
-                <div className="absolute inset-0 z-0 pointer-events-none">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl" />
-                    <div className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] bg-indigo-100/50 rounded-full blur-3xl" />
-                    {/* Dotted Grid Overlay */}
-                    <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#e2e8f0 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-                </div>
-
-                <motion.div 
-                    style={{ y: yHero }}
-                    className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto"
-                >
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative mb-10 group"
-                    >
-                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
-                        <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border-4 border-white shadow-xl overflow-hidden">
-                            <Image
-                                src="/ayan1.jpg"
-                                alt="Ayan Pal"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-slate-200 mb-6">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                            </span>
-                            <span className="text-sm font-medium text-slate-700 tracking-wide">Available for New Opportunities</span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-                            Hi, I'm Ayan Pal.
-                        </h1>
-                        <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-2xl mx-auto font-light leading-relaxed">
-                            I engineer digital experiences that are fast, accessible, and visually striking. Building the modern web from <strong className="text-slate-900">Kolkata, India</strong>.
-                        </p>
-
-                        <div className="flex flex-wrap items-center justify-center gap-4">
-                            <a
-                                href="/projects"
-                                className="px-8 py-4 bg-slate-900 text-white rounded-full font-medium hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-slate-900/20"
-                            >
-                                View My Work
-                            </a>
-                            <a
-                                href="#details"
-                                className="px-8 py-4 bg-white text-slate-900 border border-slate-200 rounded-full font-medium hover:bg-slate-50 transition-all hover:scale-105 active:scale-95"
-                            >
-                                Read My Story
-                            </a>
-                        </div>
-
-                        <div className="mt-14 flex items-center justify-center gap-8 text-slate-400">
-                            <a href="https://github.com/ayanpal01" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors transform hover:-translate-y-1">
-                                <Github size={28} />
-                            </a>
-                            <a href="https://www.linkedin.com/in/ayanpal01" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors transform hover:-translate-y-1">
-                                <Linkedin size={28} />
-                            </a>
-                            <a href="mailto:work.ayanpal@gmail.com" className="hover:text-red-500 transition-colors transform hover:-translate-y-1">
-                                <Mail size={28} />
-                            </a>
-                        </div>
-                    </motion.div>
-                </motion.div>
-                
-                {/* Scroll Down Indicator */}
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1, duration: 1 }}
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-400 animate-bounce"
-                >
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-slate-300 to-transparent mx-auto" />
-                </motion.div>
-            </section>
-
-            {/* About Details Section */}
-            <section id="details" className="w-full px-4 md:px-8 py-32 bg-white relative z-10 shadow-[0_-20px_50px_-15px_rgba(0,0,0,0.1)] rounded-t-[3rem] mt-[-2rem]">
-                <div className="max-w-6xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-16 md:mb-24"
-                    >
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">The Journey So Far</h2>
-                        <div className="w-20 h-1 bg-blue-500 rounded-full mb-10" />
-                        
-                        <p className="text-xl text-slate-600 max-w-3xl leading-relaxed font-light">
-                            I am a software developer and technology enthusiast. I focus on creating exceptional web experiences by bridging the gap between design and engineering. With deep knowledge of the full stack and a keen eye for detail, I bring ideas to life.
-                        </p>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* Location & Role */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                            className="bg-slate-50/50 rounded-3xl p-8 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group"
-                        >
-                            <div className="w-14 h-14 bg-white border border-slate-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                                <MapPin className="text-slate-700" size={24} />
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">Based in India</h3>
-                            <p className="text-slate-600 leading-relaxed font-light">
-                                Working from the vibrant city of <strong>Kolkata</strong>, I collaborate with teams and clients globally to deliver production-ready software.
-                            </p>
-                        </motion.div>
-
-                        {/* Tech Stack */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="bg-slate-50/50 rounded-3xl p-8 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group lg:col-span-2"
-                        >
-                            <div className="w-14 h-14 bg-white border border-slate-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                                <Code className="text-slate-700" size={24} />
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">Technology Arsenal</h3>
-                            <p className="text-slate-600 leading-relaxed font-light mb-6">
-                                Fluent in the modern JavaScript/TypeScript ecosystem. I specialize in building SPAs, SSG/SSR applications, and robust backend microservices.
-                            </p>
-                            <div className="flex flex-wrap gap-2">
-                                {['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS', 'PostgreSQL', 'MongoDB', 'AI Integration'].map((tech) => (
-                                    <span key={tech} className="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-sm text-slate-700 font-medium">
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        </motion.div>
-
-                        {/* Education */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                            className="bg-slate-50/50 rounded-3xl p-8 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group lg:col-span-2"
-                        >
-                            <div className="w-14 h-14 bg-white border border-slate-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                                <GraduationCap className="text-slate-700" size={24} />
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">Academic Background</h3>
-                            <p className="text-slate-600 leading-relaxed font-light">
-                                Pursuing a <strong>Master of Computer Applications (MCA)</strong> at <strong>Adamas University</strong> (2025-2027). 
-                                My academic journey strongly aligns with my professional work, focusing heavily on software engineering principles, algorithms, and advanced systems architecture.
-                            </p>
-                        </motion.div>
-
-                        {/* Approach */}
-                        <motion.div 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="bg-slate-50/50 rounded-3xl p-8 border border-slate-100 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 group"
-                        >
-                            <div className="w-14 h-14 bg-white border border-slate-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
-                                <Sparkles className="text-slate-700" size={24} />
-                            </div>
-                            <h3 className="text-xl font-bold text-slate-900 mb-3">Development Ethos</h3>
-                            <p className="text-slate-600 leading-relaxed font-light">
-                                I believe in writing code that is as clean beneath the surface as the interface is on the screen. Performance, accessibility, and scalability are never afterthoughts.
-                            </p>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
+  return (
+    <main>
+      <header className="hero">
+        <div className="container hero__grid">
+          <div className="reveal">
+            <span className="status-tag"><span className="dot"></span> Available for new opportunities</span>
+            <h1>Hi, I'm <em>Ayan</em> Pal.</h1>
+            <p className="hero__lede">I engineer digital experiences that are fast, accessible, and visually striking — building the modern web from Kolkata, India.</p>
+            <div className="hero__actions">
+              <Link href="/projects" className="btn btn-primary">View My Work <span className="btn-arrow">→</span></Link>
+              <a href="#details" className="btn btn-ghost">Read My Story</a>
+            </div>
+            <div className="hero__social">
+              <a href="https://github.com/ayanpal01" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.35 4.69-4.58 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.59.69.48A10 10 0 0 0 12 2z"/></svg>
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/ayanpal01" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-1.7 3.15-1.7 3.37 0 4 2.2 4 5.1V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.05 1.4-2.05 2.9V21H10V9z"/></svg>
+                LinkedIn
+              </a>
+              <a href="mailto:work.ayanpal@gmail.com">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+                Email
+              </a>
+            </div>
+          </div>
         </div>
-    );
+      </header>
+
+      {/* ============ JOURNEY ============ */}
+      <section id="details">
+        <div className="container">
+          <div className="section-head reveal">
+            <div className="section-head__copy">
+              <span className="eyebrow">Module 01 — Overview</span>
+              <h2>The journey so far</h2>
+            </div>
+            <span className="sheet-tag">PROFILE</span>
+          </div>
+          <p className="reveal" style={{ maxWidth: '68ch', fontSize: '1.05rem' }}>I am a software developer and technology enthusiast who focuses on creating exceptional web experiences by bridging the gap between design and engineering. With a working knowledge of the full stack and a keen eye for detail, I bring ideas to life — from a Figma frame to a deployed build.</p>
+        </div>
+      </section>
+
+      {/* ============ DETAIL CARDS ============ */}
+      <section id="background">
+        <div className="container">
+          <div className="grid-2 reveal">
+            <article className="card">
+              <p className="card__eyebrow">Where I work from</p>
+              <h3>Based in India</h3>
+              <p>Working from the vibrant city of Kolkata, I collaborate with teams and clients globally to deliver production-ready software.</p>
+            </article>
+
+            <article className="card">
+              <p className="card__eyebrow">What I build with</p>
+              <h3>Technology arsenal</h3>
+              <p>Fluent in the modern JavaScript/TypeScript ecosystem — I specialise in SPAs, SSG/SSR applications, and robust backend microservices.</p>
+              <div className="tag-row" style={{ marginTop: '1.2rem' }}>
+                <span className="tag">React</span><span className="tag">Next.js</span><span className="tag">TypeScript</span>
+                <span className="tag">Node.js</span><span className="tag">Tailwind CSS</span><span className="tag">PostgreSQL</span>
+                <span className="tag">MongoDB</span><span className="tag">AI Integration</span>
+              </div>
+            </article>
+
+            <article className="card">
+              <p className="card__eyebrow">Where I'm studying</p>
+              <h3>Academic background</h3>
+              <p>Pursuing a Master of Computer Applications (MCA) at Adamas University (2025–2027). My academic work aligns closely with my professional focus — software engineering principles, algorithms, and advanced systems architecture.</p>
+            </article>
+
+            <article className="card">
+              <p className="card__eyebrow">How I work</p>
+              <h3>Development ethos</h3>
+              <p>I believe in writing code that's as clean beneath the surface as the interface is on screen. Performance, accessibility, and scalability are never afterthoughts — they're part of the spec from line one.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ CONTACT / CLOSING ============ */}
+      <section id="contact" className="closing">
+        <div className="container reveal">
+          <span className="eyebrow" style={{ justifyContent: 'center' }}>Module 02 — Get in touch</span>
+          <h2>Have a project in mind?</h2>
+          <p>I'm currently open to full-stack roles, freelance work, and interesting collaborations.</p>
+          <a href="mailto:work.ayanpal@gmail.com" className="closing__email">work.ayanpal@gmail.com</a>
+          <div className="closing__actions">
+            <Link href="/projects" className="btn btn-primary">See My Projects <span className="btn-arrow">→</span></Link>
+            <a href="https://github.com/ayanpal01" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">Visit GitHub</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
