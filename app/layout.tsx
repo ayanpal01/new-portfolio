@@ -3,6 +3,7 @@ import "./globals.css";
 import JsonLd from "./json-ld";
 import Navbar from "@/components/navbar";
 import ClientScripts from "@/components/ClientScripts";
+import CustomCursor from "@/components/CustomCursor";
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -156,6 +157,7 @@ export default function RootLayout({
           <span className="br">REV. 2026.06 <i className="tick"></i></span>
         </div>
         <JsonLd />
+        <CustomCursor />
         <Navbar/>
         {children}
         <footer className="site-footer">

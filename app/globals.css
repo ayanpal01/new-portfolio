@@ -59,6 +59,53 @@ body{
   overflow-x: hidden;
 }
 
+@media (pointer: fine) {
+  body, a, button, [role="button"], input, select, textarea {
+    cursor: none !important;
+  }
+}
+
+/* ---- Custom Cursor -------------------------------------------------------- */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 6px; height: 6px;
+  background: var(--amber);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 32px; height: 32px;
+  border: 1px solid var(--cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: screen;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.crosshair-x {
+  position: absolute;
+  width: 44px;
+  height: 1px;
+  background: var(--cyan);
+  opacity: 0.5;
+}
+
+.crosshair-y {
+  position: absolute;
+  width: 1px;
+  height: 44px;
+  background: var(--cyan);
+  opacity: 0.5;
+}
+
 /* faint graph-paper ground, fixed under everything */
 .blueprint-grid{
   position: fixed;
