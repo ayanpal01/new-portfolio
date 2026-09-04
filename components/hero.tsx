@@ -1,51 +1,113 @@
 "use client";
 
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import * as React from "react";
+import Image from "next/image";
+import { Send , FileUser } from "lucide-react";
+import { useTheme } from "next-themes";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
-  return (
-    <header className="hero">
-      <div className="container hero__grid">
-        <div className="reveal">
-          <span className="status-tag">
-            <span className="dot"></span> Available for full-stack roles &amp; freelance
-          </span>
-          <h1>Building digital<br />
-          <em>experiences</em> that matter.</h1>
-          <p className="hero__lede">I'm Ayan Pal — a full-stack developer who takes a project from spec to shipped product: React and Next.js on the front, Node.js and databases underneath, AI where it earns its place.</p>
-          <div className="hero__actions">
-            <Link href="/projects" className="btn btn-primary">
-              View Projects <span className="btn-arrow">→</span>
-            </Link>
-            <a href="#contact" className="btn btn-ghost">Contact Me</a>
-          </div>
-          <div className="hero__social">
-            <a href="https://github.com/ayanpal01" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.4 9.4 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.35 4.69-4.58 4.93.36.31.68.92.68 1.85v2.75c0 .26.18.59.69.48A10 10 0 0 0 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/ayanpal01" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-1 1.83-1.7 3.15-1.7 3.37 0 4 2.2 4 5.1V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.05 1.4-2.05 2.9V21H10V9z"/></svg>
-              LinkedIn
-            </a>
-            <a href="mailto:work.ayanpal@gmail.com">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
-              Email
-            </a>
-          </div>
-        </div>
-      </div>
+  const [mounted, setMounted] = React.useState(false);
+  const [avatar, setAvatar] = React.useState("/FaceAvatar.png");
+  const { setTheme, theme, systemTheme } = useTheme();
 
-      <div className="container">
-        <div className="factpanel reveal">
-          <div className="factpanel__item"><span className="label">Currently</span><span className="value">MCA Student · 2025–2027</span></div>
-          <div className="factpanel__item"><span className="label">Institute</span><span className="value">Adamas University</span></div>
-          <div className="factpanel__item"><span className="label">Location</span><span className="value">Kolkata, West Bengal</span></div>
-          <div className="factpanel__item"><span className="label">Focus</span><span className="value">Full-Stack &amp; Gen AI </span></div>
+  const titles = ["Full Stack Developer", "MCA Student", "Problem Solver"];
+  const [titleIndex, setTitleIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    setMounted(true);
+    const interval = setInterval(() => {
+      setTitleIndex((prev) => (prev + 1) % titles.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [titles.length]);
+
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const isDark = currentTheme === "dark";
+
+  const toggleTheme = () => {
+    const newTheme = isDark ? "light" : "dark";
+    if (!document.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+    document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+  };
+
+  return (
+    <section className="relative w-full border-b border-neutral-200 dark:border-neutral-800/50" id="profile">
+      {/* Dotted Background top half */}
+      <div 
+        className="absolute top-0 left-0 w-full h-40 opacity-20 dark:opacity-40 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, #888 1px, transparent 1px)",
+          backgroundSize: "16px 16px",
+          maskImage: "linear-gradient(to bottom, black, transparent)",
+          WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+        }}
+      />
+      
+      <div className="pt-24 pb-8 px-6 flex flex-col gap-5">
+        {/* Top Row: Avatar and Info */}
+        <div className="flex flex-row items-center gap-6 z-10">
+          <div 
+            className="relative w-24 h-24 cursor-pointer overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black shadow-sm shrink-0"
+            onClick={() => setAvatar(prev => prev === "/FaceAvatar.png" ? "/image.png" : "/FaceAvatar.png")}
+            title="Click to swap avatar"
+          >
+            <Image 
+              src={avatar}
+              alt="Ayan Pal"
+              fill
+              className="object-cover transition-opacity duration-300 p-1 rounded-2xl"
+              sizes="96px"
+              priority
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <h1 className="text-[22px] font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+              Ayan Pal
+            </h1>
+            <div className="text-[13px] text-neutral-500 dark:text-neutral-400 font-medium h-[20px] overflow-hidden relative w-[180px] mt-1">
+              <AnimatePresence mode="popLayout">
+                <motion.span
+                  key={titleIndex}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute left-0 top-0 whitespace-nowrap"
+                >
+                  {titles[titleIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Row: Actions */}
+        <div className="flex gap-3 z-10">
+          <a 
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-800 dark:border-neutral-200 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-50 transition-colors text-[11px] font-medium text-neutral-300 dark:text-neutral-700 cursor-pointer"
+          >
+            <FileUser className="w-3 h-3 text-blue-600" />
+            View Resume
+          </a>
+          <a 
+            href="/contact"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-800 dark:border-neutral-200 bg-neutral-900 dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-50 transition-colors text-[11px] font-medium text-neutral-300 dark:text-neutral-700 cursor-pointer"
+          >
+            <Send className="w-3 h-3 text-cyan-600" />
+            Contact
+          </a>
         </div>
       </div>
-    </header>
+    </section>
   );
 }

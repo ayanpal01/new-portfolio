@@ -1,78 +1,63 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import * as React from "react";
+import Link from "next/link";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Pixelify_Sans } from "next/font/google";
+
+const pixelFont = Pixelify_Sans({ subsets: ["latin"], weight: "400" });
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
+  const [mounted, setMounted] = React.useState(false);
+  const { setTheme, theme, systemTheme } = useTheme();
 
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? "hidden" : "";
-  }, [isOpen]);
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const currentTheme = theme === "system" ? systemTheme : theme;
+  const isDark = currentTheme === "dark";
 
-  const closeMenu = () => setIsOpen(false);
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark");
+  };
 
   return (
-    <nav className="nav">
-      <Link href="/" className="nav__logo" onClick={closeMenu}>
-        [ <b>AYAN</b> PAL ]
+    <nav className="w-full h-14 px-6 flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800/50 sticky top-0 z-50 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-md">
+      {/* Brand */}
+      <Link href="/" className={`text-2xl leading-none tracking-wide uppercase ${pixelFont.className}`}>
+        AYAN PAL
       </Link>
       
-      <button 
-        className={`nav__toggle ${isOpen ? 'is-open' : ''}`} 
-        onClick={toggleMenu}
-        aria-label="Toggle menu" 
-        aria-expanded={isOpen}
-      >
-        <span></span><span></span><span></span>
-      </button>
+      {/* Middle Links */}
+      <div className="hidden md:flex items-center gap-4">
+        <Link href="/projects" className="text-[13px] text-neutral-500 hover:text-black dark:hover:text-white transition-colors">
+          Projects
+        </Link>
+        <Link href="/contact" className="text-[13px] text-neutral-500 hover:text-black dark:hover:text-white transition-colors">
+          Contact
+        </Link>
+      </div>
 
-      <ul className={`nav__links ${isOpen ? 'is-open' : ''}`}>
-        <li>
-          <Link 
-            href="/" 
-            className={pathname === '/' ? 'is-active' : ''}
-            onClick={closeMenu}
-          >
-            HOME
-          </Link>
-        </li>
-        <li>
-          <Link 
-            href="/about-ayan-pal" 
-            className={pathname === '/about-ayan-pal' ? 'is-active' : ''}
-            onClick={closeMenu}
-          >
-            ABOUT
-          </Link>
-        </li>
-        <li>
-          <Link 
-            href="/projects" 
-            className={pathname === '/projects' ? 'is-active' : ''}
-            onClick={closeMenu}
-          >
-            PROJECTS
-          </Link>
-        </li>
-        <li>
-          <Link 
-            href="/gallery" 
-            className={pathname === '/gallery' ? 'is-active' : ''}
-            onClick={closeMenu}
-          >
-            GALLERY
-          </Link>
-        </li>
-      </ul>
-
-      <a href="mailto:work.ayanpal@gmail.com" className="btn btn-ghost nav__cta">
-        Contact
-      </a>
+      {/* Right Icons */}
+      <div className="flex items-center gap-2 border-l border-neutral-200 dark:border-neutral-800/50 pl-4">
+        <button 
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+          className="inline-flex items-center justify-center rounded-full size-7 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors relative"
+        >
+          {mounted && (
+            <>
+              {isDark ? (
+                <Sun className="h-[18px] w-[18px] text-neutral-500 hover:text-white transition-colors" />
+              ) : (
+                <Moon className="h-[18px] w-[18px] text-neutral-500 hover:text-black transition-colors" />
+              )}
+            </>
+          )}
+        </button>
+      </div>
     </nav>
   );
 }

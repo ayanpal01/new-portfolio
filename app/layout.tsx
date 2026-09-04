@@ -3,7 +3,7 @@ import "./globals.css";
 import JsonLd from "./json-ld";
 import Navbar from "@/components/navbar";
 import ClientScripts from "@/components/ClientScripts";
-import CustomCursor from "@/components/CustomCursor";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -140,38 +140,30 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />
       </head>
-      <body className={`antialiased font-sans`}>
-        <div className="blueprint-grid" aria-hidden="true"></div>
-        <div className="progress-rule" aria-hidden="true"></div>
-        <div className="regmarks" aria-hidden="true">
-          <span className="tl"><i className="tick"></i> SHEET 01/04 — PORTFOLIO</span>
-          <span className="br">REV. 2026.06 <i className="tick"></i></span>
-        </div>
-        <JsonLd />
-        <CustomCursor />
-        <Navbar/>
-        {children}
-        <footer className="site-footer">
-          <div className="container site-footer__row">
-            <span className="site-footer__brand">© <span data-year="2026">2026</span> Ayan Pal — Full Stack Developer. All rights reserved.</span>
-            <div className="site-footer__social">
-              <a href="https://github.com/ayanpal01" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://linkedin.com/in/ayanpal01" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href="https://x.com/ayanpal01" target="_blank" rel="noopener noreferrer">X</a>
-            </div>
-            <span className="site-footer__meta">Based in Kolkata, India<br/>Built with React, Next.js &amp; Node.js</span>
+      <body className={`antialiased font-sans bg-white dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 min-h-screen selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <JsonLd />
+          <div className="max-w-[700px] mx-auto min-h-screen border-x border-neutral-200 dark:border-neutral-800/50 bg-white dark:bg-[#0a0a0a]">
+            <Navbar/>
+            {children}
+            <footer className="w-full py-8 text-[13px] text-neutral-500 border-t border-neutral-200 dark:border-neutral-800/50 flex flex-col items-center justify-center gap-1">
+              <p>
+                Designed and developed by <a href="https://x.com/ayanpal01" target="_blank" rel="noreferrer" className="text-neutral-900 dark:text-neutral-100 hover:underline underline-offset-4 font-medium">Ayan Pal</a>
+              </p>
+              <p>© {new Date().getFullYear()}. </p>
+            </footer>
           </div>
-        </footer>
-        <ClientScripts />
+          <ClientScripts />
+        </ThemeProvider>
       </body>
     </html>
   );

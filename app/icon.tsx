@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'fs/promises';
+import { join } from 'path';
 
 // Image metadata
 export const size = {
@@ -8,26 +10,21 @@ export const size = {
 export const contentType = 'image/png';
 
 // Icon component
-export default function Icon() {
+export default async function Icon() {
+  const file = await readFile(join(process.cwd(), 'public/FaceAvatar.png'));
+  const src = `data:image/png;base64,${file.toString('base64')}`;
+
   return new ImageResponse(
     (
-      <div
+      <img
+        src={src}
         style={{
-          fontSize: 20,
-          background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 100%)',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'white',
-          fontWeight: 'bold',
-          fontFamily: 'system-ui, sans-serif',
-          borderRadius: '6px',
+          width: 32,
+          height: 32,
+          borderRadius: 16,
+          objectFit: 'cover',
         }}
-      >
-        AP
-      </div>
+      />
     ),
     {
       ...size,
