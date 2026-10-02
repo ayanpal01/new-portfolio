@@ -57,8 +57,7 @@ export async function POST(request: Request) {
     try {
       const web3Key =
         process.env.NEXT_PUBLIC_WEB3FORMS_KEY ||
-        process.env.WEB3FORMS_KEY ||
-        "e8ab6a9e-2fd9-462c-a966-f458016a98e4";
+        process.env.WEB3FORMS_KEY;
 
       const web3Controller = new AbortController();
       const web3Timeout = setTimeout(() => web3Controller.abort(), 8000);

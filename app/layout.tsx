@@ -101,17 +101,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/FaceAvatar.png', type: 'image/png' },
+      { url: '/favicon.ico' },
     ],
+    shortcut: '/FaceAvatar.png',
     apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      {
-        rel: 'mask-icon',
-        url: '/safari-pinned-tab.svg',
-        color: '#000000',
-      },
+      { url: '/FaceAvatar.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   manifest: '/site.webmanifest',
@@ -140,14 +135,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
+        <link rel="icon" href="/FaceAvatar.png" type="image/png" />
+        <link rel="shortcut icon" href="/FaceAvatar.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/FaceAvatar.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />
+        <JsonLd />
         <script
           id="theme-detector"
           dangerouslySetInnerHTML={{
@@ -186,7 +185,6 @@ export default function RootLayout({
       </head>
       <body className={`antialiased font-sans bg-white dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 min-h-screen selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-          <JsonLd />
           <div className="max-w-[700px] mx-auto min-h-screen border-x border-neutral-200 dark:border-neutral-800/50 bg-white dark:bg-[#0a0a0a]">
             <Navbar/>
             {children}
