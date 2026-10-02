@@ -148,9 +148,44 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />
+        <script
+          id="theme-detector"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var storedTheme = localStorage.getItem('theme');
+                  var userChoice = localStorage.getItem('theme-user-choice');
+
+                  // If user already has a stored theme (either chosen or previously initialized), keep it
+                  if (storedTheme) {
+                    document.documentElement.classList.remove('light', 'dark');
+                    document.documentElement.classList.add(storedTheme);
+                    document.documentElement.style.colorScheme = storedTheme;
+                    return;
+                  }
+
+                  // First visit: detect mobile devices reliably across multiple indicators
+                  var isMobile = (
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                    (window.screen && window.screen.width > 0 && window.screen.width <= 768) ||
+                    (window.innerWidth > 0 && window.innerWidth <= 768) ||
+                    (window.matchMedia && window.matchMedia('(max-width: 768px)').matches)
+                  );
+
+                  var initialTheme = isMobile ? 'light' : 'dark';
+                  localStorage.setItem('theme', initialTheme);
+                  document.documentElement.classList.remove('light', 'dark');
+                  document.documentElement.classList.add(initialTheme);
+                  document.documentElement.style.colorScheme = initialTheme;
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
       </head>
       <body className={`antialiased font-sans bg-white dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 min-h-screen selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <JsonLd />
           <div className="max-w-[700px] mx-auto min-h-screen border-x border-neutral-200 dark:border-neutral-800/50 bg-white dark:bg-[#0a0a0a]">
             <Navbar/>

@@ -24,10 +24,10 @@ export function middleware(request: NextRequest) {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "img-src 'self' data: https: blob:",
     "font-src 'self' data: https://fonts.gstatic.com",
-    "connect-src 'self' https://www.google-analytics.com",
+    "connect-src 'self' https://www.google-analytics.com https://formsubmit.co https://api.web3forms.com",
     "frame-ancestors 'self'",
     "base-uri 'self'",
-    "form-action 'self'",
+    "form-action 'self' https://formsubmit.co",
   ].join('; ');
 
   response.headers.set('Content-Security-Policy', csp);

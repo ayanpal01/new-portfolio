@@ -2,9 +2,20 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export default function ClientScripts() {
   const pathname = usePathname();
+  const { setTheme } = useTheme();
+
+  useEffect(() => {
+    try {
+      const storedTheme = localStorage.getItem("theme");
+      if (storedTheme) {
+        setTheme(storedTheme);
+      }
+    } catch (err) {}
+  }, [setTheme]);
 
   useEffect(() => {
     // ---- Scroll progress rule ----
@@ -50,7 +61,7 @@ export default function ClientScripts() {
     return () => {
       if (typeof window !== "undefined" && "IntersectionObserver" in window) {
         revealEls.forEach((el) => {
-          // io.unobserve is handled by disconnecting or the elements being removed
+          // unobserved on disconnect
         });
       }
     };

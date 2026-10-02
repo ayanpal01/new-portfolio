@@ -20,7 +20,7 @@ export default async function Activity() {
 
   return (
     <section className="py-8 px-6 border-b border-neutral-200 dark:border-neutral-800/50" id="activity">
-      <h2 className="text-[17px] font-medium mb-6 text-neutral-900 dark:text-neutral-100 tracking-tight">Activity</h2>
+      <h2 className="text-[17px] font-medium mb-6 text-neutral-900 dark:text-neutral-100 tracking-tight">GitHub Activity</h2>
       <div className="w-full">
         {data ? (
           <ContributionGraph data={data} title="Contributions" />

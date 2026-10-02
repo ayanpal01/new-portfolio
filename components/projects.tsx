@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ExternalLink, FileText, BrainCircuit, CreditCard } from "lucide-react";
+import { ExternalLink, FileText, BrainCircuit, CreditCard, Cpu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -15,7 +15,86 @@ import {
 } from "react-icons/si";
 import { FaGithub } from "react-icons/fa6";
 
-const projects = [
+export interface ProjectItem {
+  name: string;
+  status?: string;
+  inProgress?: boolean;
+  description: string;
+  tech: {
+    name: string;
+    icon: React.ComponentType<{ className?: string }>;
+    color: string;
+  }[];
+  img?: string;
+  live?: string;
+  code?: string;
+  bgColor?: string;
+}
+
+const projects: ProjectItem[] = [
+    {
+    name: "Data Centers Health Monitor",
+    status: "In Progress",
+    inProgress: true,
+    description:
+      "An Explainable Multi-Agent Decision-Making Framework for Data Centers Using IoT, Model Context Protocol (MCP) and LangGraph",
+    tech: [
+      {
+        name: "IoT",
+        icon: BrainCircuit,
+        color: "text-purple-500",
+      },
+      {
+        name: "AI/ML",
+        icon: BrainCircuit,
+        color: "text-green-600",
+      },
+      {
+        name: "ESP32",
+        icon: Cpu,
+        color: "text-blue-500",
+      },
+    ],
+    img: "/HPC.png",
+    // live: "",
+    code: "https://github.com/ayanpal01/multi-agent-datacenter-monitoring",
+    bgColor: "bg-cyan-100 dark:bg-cyan-950",
+  },
+    {
+    name: "Novara",
+    description:
+      "Full-stack fashion e-commerce platform with product management, authentication, cart and wishlist features, secure Razorpay payments, order tracking, reviews, and an admin dashboard.",
+    tech: [
+      {
+        name: "Next.js",
+        icon: SiNextdotjs,
+        color: "text-black dark:text-white",
+      },
+      { name: "React", icon: SiReact, color: "text-sky-500" },
+      { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
+      { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
+      { name: "Firebase", icon: SiFirebase, color: "text-yellow-500" },
+      { name: "Razorpay", icon: CreditCard, color: "text-blue-500" },
+    ],
+    img: "/novara.png",
+    live: "",
+    code: "https://github.com/ayanpal01/novara",
+    bgColor: "bg-rose-100 dark:bg-rose-950",
+  },
+  {
+    name: "PG Master",
+    description:
+      "Role-based PG management system for attendance, expense management and payment-receipt generation.",
+    tech: [
+      { name: "React", icon: SiReact, color: "text-sky-500" },
+      { name: "jsPDF", icon: FileText, color: "text-red-500" },
+    ],
+    img: "/PgMaster.png",
+    live: "https://pg-master-gilt.vercel.app/",
+    code: "https://github.com/ayanpal01",
+    bgColor: "bg-purple-100 dark:bg-purple-950",
+  },
+
   {
     name: "SketchSync",
     description:
@@ -38,7 +117,7 @@ const projects = [
     code: "https://github.com/ayanpal01",
     // bgColor: "bg-orange-100 dark:bg-orange-950"
   },
-  {
+    {
     name: "IngrediScan",
     description:
       "Full-stack nutrition analysis application supporting image/OCR input with AI-powered analysis.",
@@ -54,40 +133,6 @@ const projects = [
     live: "https://ingredi-scan.vercel.app/",
     code: "https://github.com/ayanpal01",
     bgColor: "bg-blue-100 dark:bg-blue-950",
-  },
-  {
-    name: "PG Master",
-    description:
-      "Role-based PG management system for attendance, expense management and payment-receipt generation.",
-    tech: [
-      { name: "React", icon: SiReact, color: "text-sky-500" },
-      { name: "jsPDF", icon: FileText, color: "text-red-500" },
-    ],
-    img: "/PgMaster.png",
-    live: "https://pg-master-gilt.vercel.app/",
-    code: "https://github.com/ayanpal01",
-    bgColor: "bg-purple-100 dark:bg-purple-950",
-  },
-  {
-    name: "Novara",
-    description:
-      "Full-stack fashion e-commerce platform with product management, authentication, cart and wishlist features, secure Razorpay payments, order tracking, reviews, and an admin dashboard.",
-    tech: [
-      {
-        name: "Next.js",
-        icon: SiNextdotjs,
-        color: "text-black dark:text-white",
-      },
-      { name: "React", icon: SiReact, color: "text-sky-500" },
-      { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
-      { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
-      { name: "Firebase", icon: SiFirebase, color: "text-yellow-500" },
-      { name: "Razorpay", icon: CreditCard, color: "text-blue-500" },
-    ],
-    img: "/novara.png",
-    live: "",
-    code: "https://github.com/ayanpal01/novara",
-    bgColor: "bg-rose-100 dark:bg-rose-950",
   },
   {
     name: "Weather Dash",
@@ -123,6 +168,15 @@ export default function Projects({ limit }: { limit?: number }) {
             <div
               className={`w-full aspect-video rounded-xl mb-3 flex items-center justify-center border border-neutral-200 dark:border-neutral-800 relative overflow-hidden`}
             >
+              {(project.status || project.inProgress) && (
+                <div className="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md text-amber-600 dark:text-amber-400 border border-amber-500/30 shadow-xs">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500"></span>
+                  </span>
+                  {project.status || "In Progress"}
+                </div>
+              )}
               {project.img ? (
                 <Image
                   src={project.img}
@@ -144,23 +198,27 @@ export default function Projects({ limit }: { limit?: number }) {
                 {project.name}
               </h3>
               <div className="flex gap-2">
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-[10px] font-medium bg-neutral-100 dark:bg-neutral-900 px-2 py-0.5 rounded text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
-                >
-                  Live <ExternalLink className="w-2.5 h-2.5" />
-                </a>
-                <a
-                  href={project.code}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-[10px] font-medium bg-neutral-100 dark:bg-neutral-900 px-2 py-0.5 rounded text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
-                >
-                  <FaGithub className="w-3 h-3" />
-                  Code
-                </a>
+                {project.live ? (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[10px] font-medium bg-neutral-100 dark:bg-neutral-900 px-2 py-0.5 rounded text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  >
+                    Live <ExternalLink className="w-2.5 h-2.5" />
+                  </a>
+                ) : null}
+                {project.code ? (
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-[10px] font-medium bg-neutral-100 dark:bg-neutral-900 px-2 py-0.5 rounded text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
+                  >
+                    <FaGithub className="w-3 h-3" />
+                    Code
+                  </a>
+                ) : null}
               </div>
             </div>
 
