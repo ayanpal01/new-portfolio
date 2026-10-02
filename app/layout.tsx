@@ -6,7 +6,10 @@ import ClientScripts from "@/components/ClientScripts";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
   colorScheme: "dark light",
   width: "device-width",
   initialScale: 1,
@@ -154,26 +157,18 @@ export default function RootLayout({
               (function() {
                 try {
                   var storedTheme = localStorage.getItem('theme');
-                  var userChoice = localStorage.getItem('theme-user-choice');
 
-                  // If user already has a stored theme (either chosen or previously initialized), keep it
-                  if (storedTheme) {
+                  // If user has a stored theme ('dark' or 'light'), apply it immediately
+                  if (storedTheme === 'dark' || storedTheme === 'light') {
                     document.documentElement.classList.remove('light', 'dark');
                     document.documentElement.classList.add(storedTheme);
                     document.documentElement.style.colorScheme = storedTheme;
                     return;
                   }
 
-                  // First visit: detect mobile devices reliably across multiple indicators
-                  var isMobile = (
-                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-                    (window.screen && window.screen.width > 0 && window.screen.width <= 768) ||
-                    (window.innerWidth > 0 && window.innerWidth <= 768) ||
-                    (window.matchMedia && window.matchMedia('(max-width: 768px)').matches)
-                  );
-
-                  var initialTheme = isMobile ? 'light' : 'dark';
-                  localStorage.setItem('theme', initialTheme);
+                  // On first visit, respect the operating system's prefers-color-scheme preference
+                  var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  var initialTheme = systemPrefersDark ? 'dark' : 'light';
                   document.documentElement.classList.remove('light', 'dark');
                   document.documentElement.classList.add(initialTheme);
                   document.documentElement.style.colorScheme = initialTheme;
@@ -184,7 +179,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`antialiased font-sans bg-white dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 min-h-screen selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme" disableTransitionOnChange>
           <div className="max-w-[700px] mx-auto min-h-screen border-x border-neutral-200 dark:border-neutral-800/50 bg-white dark:bg-[#0a0a0a]">
             <Navbar/>
             {children}

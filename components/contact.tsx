@@ -23,7 +23,7 @@ export default function Contact() {
         </a>
         <a 
           href="/contact" 
-          target="_blank"
+          target="_self"
           rel="noopener noreferrer"
           className="ml-1.5 group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black dark:bg-white text-white dark:text-black text-[13px] font-medium hover:opacity-90 transition-opacity"
         >
