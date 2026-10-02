@@ -143,7 +143,7 @@ export default function ContactPage() {
   return (
     <div className="w-full pb-24">
       {/* Header */}
-      <div className="pt-24 pb-8 px-6 border-b border-neutral-200 dark:border-neutral-800/50">
+      <div className="pt-10 pb-8 px-6 border-b border-neutral-200 dark:border-neutral-800/50">
         <h1 className="text-[22px] font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 mb-2">
           Let&apos;s talk about what you&apos;re building
         </h1>
@@ -176,6 +176,19 @@ export default function ContactPage() {
             <div className="flex flex-col">
               <span className="text-[13px] font-medium text-neutral-900 dark:text-neutral-100 group-hover:underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-700">DM me on X</span>
               <span className="text-[12px] text-neutral-500 dark:text-neutral-400 mt-0.5">@ayanpal01</span>
+            </div>
+            <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
+          </a>
+
+          <a 
+            href="https://www.instagram.com/ayanpal.exe/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex justify-between items-center group"
+          >
+            <div className="flex flex-col">
+              <span className="text-[13px] font-medium text-neutral-900 dark:text-neutral-100 group-hover:underline underline-offset-4 decoration-neutral-300 dark:decoration-neutral-700">DM me on Instragran</span>
+              <span className="text-[12px] text-neutral-500 dark:text-neutral-400 mt-0.5">@ayanpal.exe</span>
             </div>
             <ArrowUpRight className="w-4 h-4 text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
           </a>

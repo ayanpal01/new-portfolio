@@ -156,19 +156,27 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
+                  var userChoice = localStorage.getItem('theme-user-choice');
                   var storedTheme = localStorage.getItem('theme');
 
-                  // If user has a stored theme ('dark' or 'light'), apply it immediately
-                  if (storedTheme === 'dark' || storedTheme === 'light') {
+                  // If user has explicitly changed the theme previously, respect their saved choice
+                  if (userChoice === 'true' && (storedTheme === 'dark' || storedTheme === 'light')) {
                     document.documentElement.classList.remove('light', 'dark');
                     document.documentElement.classList.add(storedTheme);
                     document.documentElement.style.colorScheme = storedTheme;
                     return;
                   }
 
-                  // On first visit, respect the operating system's prefers-color-scheme preference
-                  var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                  var initialTheme = systemPrefersDark ? 'dark' : 'light';
+                  // 1st visit: Mobile screen -> light theme, Laptop / Desktop -> dark theme
+                  var isMobile = (
+                    (typeof window !== 'undefined' && window.innerWidth > 0 && window.innerWidth <= 768) ||
+                    (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 768px)').matches) ||
+                    (window.screen && window.screen.width > 0 && window.screen.width <= 768) ||
+                    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+                  );
+
+                  var initialTheme = isMobile ? 'light' : 'dark';
+                  localStorage.setItem('theme', initialTheme);
                   document.documentElement.classList.remove('light', 'dark');
                   document.documentElement.classList.add(initialTheme);
                   document.documentElement.style.colorScheme = initialTheme;
@@ -179,7 +187,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`antialiased font-sans bg-white dark:bg-[#0a0a0a] text-neutral-900 dark:text-neutral-100 min-h-screen selection:bg-neutral-900 selection:text-white dark:selection:bg-neutral-100 dark:selection:text-black`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true} storageKey="theme" disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="theme" disableTransitionOnChange>
           <div className="max-w-[700px] mx-auto min-h-screen border-x border-neutral-200 dark:border-neutral-800/50 bg-white dark:bg-[#0a0a0a]">
             <Navbar/>
             {children}

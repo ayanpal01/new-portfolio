@@ -13,6 +13,8 @@ import {
   SiMongodb,
   SiFirebase,
 } from "react-icons/si";
+import { FcElectricalSensor } from "react-icons/fc";
+import { RiRamFill } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa6";
 
 export interface ProjectItem {
@@ -53,6 +55,16 @@ const projects: ProjectItem[] = [
         name: "ESP32",
         icon: Cpu,
         color: "text-blue-500",
+      },
+      {
+        name: "BMP280",
+        icon: RiRamFill,
+        color: "text-blue-500",
+      },
+      {
+        name: "INMP441",
+        icon: FcElectricalSensor,
+        color: "text-green-600",
       },
     ],
     img: "/HPC.png",
@@ -157,9 +169,6 @@ export default function Projects({ limit }: { limit?: number }) {
       className="py-8 px-6 border-b border-neutral-200 dark:border-neutral-800/50"
       id="projects"
     >
-      <h2 className="text-[17px] font-medium mb-6 text-neutral-900 dark:text-neutral-100 tracking-tight">
-        Projects
-      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {displayedProjects.map((project, index) => (

@@ -19,7 +19,7 @@ export default function ProjectsPage() {
           WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
         }}
       />
-      <div className="pt-24 pb-8 px-6 border-b border-neutral-200 dark:border-neutral-800/50">
+      <div className="pt-10 pb-8 px-6 border-b border-neutral-200 dark:border-neutral-800/50">
         <h1 className="text-[22px] font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 mb-2">
           Projects
         </h1>
